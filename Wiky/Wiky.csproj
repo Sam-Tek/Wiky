@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +141,8 @@
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Commentaire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ArticleRepository.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Wikydb.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +181,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AjouterArticle.cshtml" />
-    <Content Include="Views\Home\VoirArticle.cshtml" />
-    <Content Include="Views\Home\ListArticle.cshtml" />
+    <Content Include="Views\Article\AjouterArticle.cshtml" />
+    <Content Include="Views\Article\VoirArticle.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
