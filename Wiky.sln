@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiky", "Wiky\Wiky.csproj", "{A840A554-E67A-49C4-9C1E-8E92D9E57877}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A840A554-E67A-49C4-9C1E-8E92D9E57877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A840A554-E67A-49C4-9C1E-8E92D9E57877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A840A554-E67A-49C4-9C1E-8E92D9E57877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A840A554-E67A-49C4-9C1E-8E92D9E57877}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4395BAC5-2428-4D4D-AC6A-70C147882EB5}
+	EndGlobalSection
+EndGlobal
