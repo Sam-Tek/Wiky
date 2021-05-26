@@ -1,0 +1,20 @@
+﻿@model Wiky.Models.Article
+@{
+    ViewBag.Title = "AjouterArticle";
+}
+
+<h2>AjouterArticle</h2>
+<p>@ViewBag.MessageAjout</p>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Theme);
+    @Html.EditorFor(m => m.Theme, new { @class= "form-control" });
+
+    @Html.LabelFor(m => m.Auteur);
+    @Html.EditorFor(m => m.Auteur);
+
+    @Html.LabelFor(m => m.Contenu);
+    @Html.EditorFor(m => m.Contenu);
+
+    <input type="submit" value="Ajouter un Article" />
+}

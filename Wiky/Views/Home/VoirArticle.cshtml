@@ -1,0 +1,11 @@
+﻿@model Wiky.Models.Article
+@{
+    ViewBag.Title = "Voir un Article";
+}
+
+<h2>Voir un Article</h2>
+<p>Auteur : @Model.Auteur </p>
+<p>Date : @Model.DateCreation.ToString("dd/MM/yyyy") </p>
+<p>Thème : @Model.Theme </p>
+<p>Contenu : @Model.Contenu </p>
+
