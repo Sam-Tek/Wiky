@@ -1,0 +1,31 @@
+﻿@model List<Wiky.Models.Article>
+@{
+    ViewBag.Title = "ListArticle";
+}
+
+<h2>ListArticle</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Thème</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Date Création</th>
+            <th scope="col">Contenu</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+            <tr>
+                <td>@article.Id</td>
+                <td>@article.Theme</td>
+                <td>@article.Auteur</td>
+                <td>@article.DateCreation.ToString("dd/MM/yyyy")</td>
+                <td>@article.Contenu</td>
+                <td>@Html.ActionLink("Voir", "VoirArticle", "Home", new { id = article.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>

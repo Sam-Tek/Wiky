@@ -45,6 +45,14 @@ namespace Wiky.Controllers
             return View();
         }
 
+        public ActionResult ListArticle()
+        {
+            Wikydb context = new Wikydb();
+            List<Article> articles = context.Article.ToList();
+
+            return View(articles);
+        }
+
         public ActionResult VoirArticle(int id = 2)
         {
             Wikydb context = new Wikydb();
