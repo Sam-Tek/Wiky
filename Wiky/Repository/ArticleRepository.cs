@@ -13,7 +13,7 @@ namespace Wiky.Repository
             return base.Context.Article.ToList();
         }
 
-        public Article FindOneById(int id)
+        public Article FindOneArticleById(int id)
         {
             return Context.Article.FirstOrDefault(a => id == a.Id);
         }
@@ -29,6 +29,19 @@ namespace Wiky.Repository
         {
             article = Context.Article.Remove(article);
             Context.SaveChanges();
+            return article;
+        }
+
+        public Article DelOneArticle(int id)
+        {
+            Article article = FindOneArticleById(id);
+            
+            if (article != null)
+            {
+                article = Context.Article.Remove(article);
+                Context.SaveChanges();
+            }
+
             return article;
         }
     }

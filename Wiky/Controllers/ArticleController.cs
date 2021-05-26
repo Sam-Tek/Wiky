@@ -33,14 +33,25 @@ namespace Wiky.Controllers
             return View();
         }
 
-        public ActionResult VoirArticle(int id = 2)
+        public ActionResult VoirArticle(int id = 0)
         {
-            Article article = new ArticleRepository().FindOneById(id);
+            Article article = new ArticleRepository().FindOneArticleById(id);
 
             if (article == null)
                 return RedirectToAction("Index");
 
             return View(article);
+        }
+
+        public ActionResult SupprimerArticle(int id = 0)
+        {
+            Article article = new ArticleRepository().DelOneArticle(id);
+
+            if (article == null)
+                return RedirectToAction("Index","Home");
+                
+            return RedirectToAction("Index");
+
         }
     }
 }

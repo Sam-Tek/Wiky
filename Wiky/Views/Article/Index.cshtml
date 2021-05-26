@@ -24,8 +24,11 @@
                 <td>@article.Auteur</td>
                 <td>@article.DateCreation.ToString("dd/MM/yyyy")</td>
                 <td>@article.Contenu</td>
-                <td>@Html.ActionLink("Voir", "VoirArticle", "Article", new { id = article.Id }, null)</td>
-            </tr>
-        }
+                <td>
+                    @Html.ActionLink("Voir", "VoirArticle", "Article", new { id = article.Id }, null) |
+                @Html.ActionLink("Supprimer", "SupprimerArticle", "Article", new { id = article.Id }, null)
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
