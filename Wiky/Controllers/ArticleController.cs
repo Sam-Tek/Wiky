@@ -48,10 +48,32 @@ namespace Wiky.Controllers
             Article article = new ArticleRepository().DelOneArticle(id);
 
             if (article == null)
-                return RedirectToAction("Index","Home");
-                
-            return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ModifierArticle(int id = 0)
+        {
+            Article article = new ArticleRepository().FindOneArticleById(id);
+
+            if (article != null)
+                return View(article);
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult ModifierArticle(Article article)
+        {
+            article = new ArticleRepository().ModifierArticle(article);
+
+            if (article != null)
+            {
+                ViewBag.Message = "Modification validée";
+                return View(article);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

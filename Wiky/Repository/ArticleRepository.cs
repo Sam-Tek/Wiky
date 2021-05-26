@@ -44,5 +44,20 @@ namespace Wiky.Repository
 
             return article;
         }
+
+        public Article ModifierArticle(Article article)
+        {
+            Article articleBDD = FindOneArticleById(article.Id);
+
+            if (articleBDD == null)
+                return articleBDD;
+
+            articleBDD.Auteur = article.Auteur;
+            articleBDD.Theme = article.Theme;
+            articleBDD.Contenu = article.Contenu;
+            Context.SaveChanges();
+
+            return articleBDD;
+        }
     }
 }

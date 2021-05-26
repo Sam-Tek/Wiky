@@ -184,6 +184,7 @@
     <Content Include="Views\Article\AjouterArticle.cshtml" />
     <Content Include="Views\Article\VoirArticle.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\ModifierArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

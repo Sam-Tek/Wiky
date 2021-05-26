@@ -26,8 +26,9 @@
                 <td>@article.Contenu</td>
                 <td>
                     @Html.ActionLink("Voir", "VoirArticle", "Article", new { id = article.Id }, null) |
-                @Html.ActionLink("Supprimer", "SupprimerArticle", "Article", new { id = article.Id }, null)
-            </td>
+                    @Html.ActionLink("Supprimer", "SupprimerArticle", "Article", new { id = article.Id }, null) |
+                    @Html.ActionLink("Modifier", "ModifierArticle", "Article", new { id = article.Id }, null)
+                </td>
         </tr>
     }
     </tbody>
