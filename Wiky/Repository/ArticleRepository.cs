@@ -37,15 +37,12 @@ namespace Wiky.Repository
             Article article = FindOneArticleById(id);
             
             if (article != null)
-            {
-                article = Context.Article.Remove(article);
-                Context.SaveChanges();
-            }
+                article = DelOneArticle(article);
 
             return article;
         }
 
-        public Article ModifierArticle(Article article)
+        public Article AmendArticle(Article article)
         {
             Article articleBDD = FindOneArticleById(article.Id);
 

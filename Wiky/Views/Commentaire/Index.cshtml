@@ -1,0 +1,35 @@
+﻿@model List<Wiky.Models.Commentaire>
+@{
+    ViewBag.Title = "ListCommentaire";
+}
+<p>@Html.ActionLink("Ajouter un Commentaire", "AjouterCommentaire", "Commentaire")</p>
+<h2>ListCommentaire</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Date Création</th>
+            <th scope="col">Contenu</th>
+            <th scope="col">ArticleID</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var commentaire in Model)
+        {
+        <tr>
+            <td>@commentaire.Id</td>
+            <td>@commentaire.Auteur</td>
+            <td>@commentaire.DateCreation.ToString("dd/MM/yyyy")</td>
+            <td>@commentaire.Contenu</td>
+            <td>@(commentaire.Article != null ? commentaire.Article.Id.ToString() : "pas d'article")  </td>
+            <td>
+                @Html.ActionLink("Voir", "VoirCommentaire", "Commentaire", new { id = commentaire.Id }, null) |
+                @Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, null) |
+                @Html.ActionLink("Modifier", "ModifierCommentaire", "Commentaire", new { id = commentaire.Id }, null)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

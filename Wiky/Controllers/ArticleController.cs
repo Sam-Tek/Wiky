@@ -65,7 +65,7 @@ namespace Wiky.Controllers
         [HttpPost]
         public ActionResult ModifierArticle(Article article)
         {
-            article = new ArticleRepository().ModifierArticle(article);
+            article = new ArticleRepository().AmendArticle(article);
 
             if (article != null)
             {

@@ -1,0 +1,18 @@
+﻿@model Wiky.Models.Commentaire
+@{
+    ViewBag.Title = "AjouterCommentaire";
+}
+
+<h2>AjouterCommentaire</h2>
+<p>@ViewBag.MessageAjout</p>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Auteur);
+    @Html.EditorFor(m => m.Auteur);
+
+    @Html.LabelFor(m => m.Contenu);
+    @Html.EditorFor(m => m.Contenu);
+
+
+    <input type="submit" value="Ajouter un Commentaire" />
+}

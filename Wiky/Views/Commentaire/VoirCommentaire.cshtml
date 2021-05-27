@@ -1,0 +1,11 @@
+﻿@model Wiky.Models.Commentaire
+@{
+    ViewBag.Title = "Voir un Commentaire";
+}
+
+<h2>Voir un Commentaire</h2>
+<p>Auteur : @Model.Auteur </p>
+<p>Date : @Model.DateCreation.ToString("dd/MM/yyyy") </p>
+<p>Contenu : @Model.Contenu </p>
+<p>Article : @(Model.Article != null ? Model.Article.Id : 0) </p>
+

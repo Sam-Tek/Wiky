@@ -1,0 +1,19 @@
+﻿@model Wiky.Models.Commentaire
+@{
+    ViewBag.Title = "ModifierCommentaire";
+}
+
+<h2>Modifier Commentaire</h2>
+<p>@ViewBag.Message</p>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id);
+    @Html.HiddenFor(m => m.DateCreation);
+
+    @Html.LabelFor(m => m.Auteur);
+    @Html.EditorFor(m => m.Auteur);
+
+    @Html.LabelFor(m => m.Contenu);
+    @Html.EditorFor(m => m.Contenu);
+    <input type="submit" value="Modifier" />
+}
