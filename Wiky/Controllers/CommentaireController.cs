@@ -31,7 +31,7 @@ namespace Wiky.Controllers
                 TempData["MessageAjout"] = "Erreur";
             else
                 TempData["MessageAjout"] = "Le commentaire est ajouté";
-            return RedirectToAction("AjouterCommentaire");
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public ActionResult VoirCommentaire(int id = 0)
@@ -51,7 +51,7 @@ namespace Wiky.Controllers
             if (commentaire == null)
                 return RedirectToAction("Index", "Home");
 
-            return RedirectToAction("Index");
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public ActionResult ModifierCommentaire(int id = 0)

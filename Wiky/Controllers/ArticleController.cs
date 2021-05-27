@@ -37,6 +37,9 @@ namespace Wiky.Controllers
         {
             Article article = new ArticleRepository().FindOneArticleById(id);
 
+            Commentaire commentaire = new Commentaire() { ArticleId = article.Id };
+            ViewBag.commentaire = commentaire;
+
             if (article == null)
                 return RedirectToAction("Index");
 

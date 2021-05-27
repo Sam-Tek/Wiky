@@ -8,12 +8,15 @@
 <p>Date : @Model.DateCreation.ToString("dd/MM/yyyy") </p>
 <p>Thème : @Model.Theme </p>
 <p>Contenu : @Model.Contenu </p>
+
+@Html.Partial("_FormCommentaire", (Wiky.Models.Commentaire)ViewBag.commentaire)
+@TempData["MessageAjout"]
 <p>Commentaires : </p>
 <ul>
 
     @foreach (var commentaire in Model.Commentaires)
     {
-        <li>@commentaire.Auteur @commentaire.DateCreation.ToString("dd/MM/yyyy") @commentaire.Contenu</li>
+        <li>@commentaire.Auteur @commentaire.DateCreation.ToString("dd/MM/yyyy") @commentaire.Contenu @Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire",new { id = commentaire.Id}, null)</li>
     }
 </ul>
 
