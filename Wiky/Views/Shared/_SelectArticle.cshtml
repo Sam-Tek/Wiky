@@ -1,0 +1,7 @@
+﻿@model List<Wiky.Models.Article>
+<select name="ArticleId">
+    @foreach (Wiky.Models.Article article in Model)
+    {
+        <option value="@article.Id">@article.Auteur @article.Contenu</option>
+    }
+</select>

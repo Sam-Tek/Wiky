@@ -195,6 +195,7 @@
     <Content Include="Views\Commentaire\Index.cshtml" />
     <Content Include="Views\Commentaire\ModifierCommentaire.cshtml" />
     <Content Include="Views\Article\VoirArticle.cshtml" />
+    <Content Include="Views\Shared\_SelectArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

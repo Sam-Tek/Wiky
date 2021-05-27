@@ -10,7 +10,7 @@ namespace Wiky.Repository
     {
         public List<Article> FindAllArticle()
         {
-            return base.Context.Article.ToList();
+            return Context.Article.ToList();
         }
 
         public Article FindOneArticleById(int id)

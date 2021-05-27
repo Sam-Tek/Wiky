@@ -18,6 +18,7 @@ namespace Wiky.Controllers
 
         public ActionResult AjouterCommentaire()
         {
+            ViewBag.ListArticle = new ArticleRepository().FindAllArticle();
             return View();
         }
         [HttpPost]
@@ -27,10 +28,10 @@ namespace Wiky.Controllers
             commentaire = new CommentaireRepository().AddOneCommentaire(commentaire);
 
             if (commentaire == null)
-                ViewBag.MessageAjout = "Erreur";
+                TempData["MessageAjout"] = "Erreur";
             else
-                ViewBag.MessageAjout = "Le commentaire est ajouté";
-            return View();
+                TempData["MessageAjout"] = "Le commentaire est ajouté";
+            return RedirectToAction("AjouterCommentaire");
         }
 
         public ActionResult VoirCommentaire(int id = 0)

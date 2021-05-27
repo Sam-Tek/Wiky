@@ -4,7 +4,7 @@
 }
 
 <h2>AjouterCommentaire</h2>
-<p>@ViewBag.MessageAjout</p>
+<p>@TempData["MessageAjout"]</p>
 @using (Html.BeginForm())
 {
     @Html.LabelFor(m => m.Auteur);
@@ -13,8 +13,7 @@
     @Html.LabelFor(m => m.Contenu);
     @Html.EditorFor(m => m.Contenu);
 
-    @Html.EditorFor(m => m.ArticleId);
+    @Html.Partial("_SelectArticle",(List<Wiky.Models.Article>) ViewBag.ListArticle);
 
-
-    <input type="submit" value="Ajouter un Commentaire" />
+    <input type="submit" value="Ajouter un Commentaire"/>
 }
