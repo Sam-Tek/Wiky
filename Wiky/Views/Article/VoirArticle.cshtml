@@ -11,12 +11,46 @@
 
 @Html.Partial("_FormCommentaire", (Wiky.Models.Commentaire)ViewBag.commentaire)
 @TempData["MessageAjout"]
-<p>Commentaires : </p>
-<ul>
+<div id="ajax">
+    <p>Commentaires :<br /></p>
 
-    @foreach (var commentaire in Model.Commentaires)
-    {
-        <li>@commentaire.Auteur @commentaire.DateCreation.ToString("dd/MM/yyyy") @commentaire.Contenu @Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire",new { id = commentaire.Id}, null)</li>
-    }
-</ul>
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var commentaire in Model.Commentaires)
+            {
+                <tr>
+                    <td>@commentaire.Id</td>
+                    <td>@commentaire.DateCreation.ToString("dd/MM/yyyy")</td>
+                    <td>@commentaire.Auteur</td>
+                    <td>@commentaire.Contenu</td>
+                    <td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, null)</td>
+                </tr>
+            }
+        <tbody>
+    </table>
+</div>
+@*Ajouter Ajax pour ajouter Commentaire*@
+@section scripts {
+    <script>
+        $("#boutonAjouterCommentaire").click(function (e) {
+            e.preventDefault();
+            var Auteur = $("#Auteur").val();
+            var Contenu = $("#Contenu").val();
+            var ArticleId = $("#ArticleId").val();
+            $.post("@(Url.Action("AjaxListeCommentaire", "Commentaire"))", { Auteur: Auteur, Contenu: Contenu, ArticleId: ArticleId },
+            function (data)
+            {
+                $("#ajax").html(data);
+            });
+        });
+    </script>
+}

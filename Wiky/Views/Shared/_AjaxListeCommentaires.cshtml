@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Wiky.Models.Commentaire>
+<p>@TempData["MessageAjout"]</p>
+<p>Commentaires :<br /></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Contenu</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var commentaire in Model)
+        {
+        <tr>
+            <td>@commentaire.Id</td>
+            <td>@commentaire.DateCreation.ToString("dd/MM/yyyy")</td>
+            <td>@commentaire.Auteur</td>
+            <td>@commentaire.Contenu</td>
+            <td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, null)</td>
+        </tr>
+        }
+    <tbody>
+</table>

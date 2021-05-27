@@ -34,6 +34,22 @@ namespace Wiky.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        [HttpPost]
+        public ActionResult AjaxListeCommentaire(Commentaire commentaire)
+        {
+            commentaire.DateCreation = DateTime.Now;
+
+            CommentaireRepository repo = new CommentaireRepository();
+            commentaire = repo.AddOneCommentaire(commentaire);
+            List<Commentaire> commentaires = repo.FindAllCommentaire();
+
+            if (commentaire == null)
+                TempData["MessageAjout"] = "Erreur";
+            else
+                TempData["MessageAjout"] = "Le commentaire est ajouté";
+            return PartialView("_AjaxListeCommentaires", commentaires);
+        }
+
         public ActionResult VoirCommentaire(int id = 0)
         {
             Commentaire commentaire = new CommentaireRepository().FindOneCommentaireById(id);
