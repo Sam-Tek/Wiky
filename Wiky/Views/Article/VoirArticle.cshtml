@@ -8,4 +8,12 @@
 <p>Date : @Model.DateCreation.ToString("dd/MM/yyyy") </p>
 <p>Thème : @Model.Theme </p>
 <p>Contenu : @Model.Contenu </p>
+<p>Commentaires : </p>
+<ul>
+
+    @foreach (var commentaire in Model.Commentaires)
+    {
+        <li>@commentaire.Auteur @commentaire.DateCreation.ToString("dd/MM/yyyy") @commentaire.Contenu</li>
+    }
+</ul>
 
