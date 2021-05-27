@@ -11,6 +11,7 @@ namespace Wiky.Models
         public string Auteur { get; set; }
         public DateTime DateCreation { get; set; }
         public string Contenu { get; set; }
+        public int ArticleId { get; set; }
         public virtual Article Article { get; set; }
     }
 }
