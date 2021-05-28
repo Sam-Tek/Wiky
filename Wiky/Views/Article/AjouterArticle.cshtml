@@ -4,9 +4,10 @@
 }
 
 <h2>AjouterArticle</h2>
-<p>@ViewBag.MessageAjout</p>
+<p>@TempData["MessageAjout"]</p>
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary()
     @Html.LabelFor(m => m.Theme);
     @Html.EditorFor(m => m.Theme);
 
@@ -15,6 +16,7 @@
 
     @Html.LabelFor(m => m.Contenu);
     @Html.EditorFor(m => m.Contenu);
+    @*@Html.ValidationMessageFor(m => m.Contenu);*@
 
     <input type="submit" value="Ajouter un Article" />
 }

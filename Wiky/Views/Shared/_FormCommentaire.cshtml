@@ -1,7 +1,10 @@
 ﻿@model Wiky.Models.Commentaire
 @using (Html.BeginForm("AjouterCommentaire", "Commentaire"))
 {
+    @Html.LabelFor(m => m.Auteur);
     @Html.EditorFor(m => m.Auteur);
+
+    @Html.LabelFor(m => m.Contenu)
     @Html.EditorFor(m => m.Contenu);
     @Html.HiddenFor(m => Model.ArticleId);
     <input type="submit" value="Ajouter un Commentaire" id="boutonAjouterCommentaire" />

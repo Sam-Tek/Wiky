@@ -18,6 +18,11 @@ namespace Wiky.Repository
             return Context.Article.FirstOrDefault(a => id == a.Id);
         }
 
+        public List<Article> FindArticleByTheme(string theme)
+        {
+            return Context.Article.Where(a => a.Theme.ToUpper() == theme.ToUpper()).ToList();
+        }
+
         public Article AddOneArticle(Article article)
         {
             article = Context.Article.Add(article);

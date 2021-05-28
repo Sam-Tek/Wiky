@@ -23,14 +23,20 @@ namespace Wiky.Controllers
         [HttpPost]
         public ActionResult AjouterArticle(Article article)
         {
-            article.DateCreation = DateTime.Now;
-            article = new ArticleRepository().AddOneArticle(article);
+            if (ModelState.IsValid)
+            {
+                article.DateCreation = DateTime.Now;
+                article = new ArticleRepository().AddOneArticle(article);
 
-            if (article == null)
-                ViewBag.MessageAjout = "Erreur";
+                if (article == null)
+                    TempData["MessageAjout"] = "Erreur";
+                else
+                    TempData["MessageAjout"] = "L'article est ajouté";
+                return View("AjouterArticle");
+
+            }
             else
-                ViewBag.MessageAjout = "L'article est ajouté";
-            return View();
+                return RedirectToAction(Request.UrlReferrer.ToString());
         }
 
         public ActionResult VoirArticle(int id = 0)
@@ -68,15 +74,36 @@ namespace Wiky.Controllers
         [HttpPost]
         public ActionResult ModifierArticle(Article article)
         {
-            article = new ArticleRepository().AmendArticle(article);
-
-            if (article != null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Message = "Modification validée";
-                return View(article);
-            }
+                article = new ArticleRepository().AmendArticle(article);
 
-            return RedirectToAction("Index");
+                if (article != null)
+                {
+                    ViewBag.Message = "Modification validée";
+                    return View(article);
+                }
+
+                return RedirectToAction("Index");
+            }
+            else
+                return RedirectToAction(Request.UrlReferrer.ToString());
         }
+
+        public ActionResult ThemeUnique(string theme, int id)
+        {
+            List<Article> articles = new ArticleRepository().FindArticleByTheme(theme);
+            if (articles.Count == 0)
+                return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        //public ActionResult ThemeUnique(string theme, int Id)
+        //{
+        //    List<Article> articles = new ArticleRepository().FindArticleByTheme(theme);
+        //    Article articleBDD = articles.FirstOrDefault(a => a.Id == Id);
+        //    if (articles.Count == 0 || (articles.Count == 1 && articleBDD != null))
+        //        return Json(true, JsonRequestBehavior.AllowGet);
+        //    return Json(false, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

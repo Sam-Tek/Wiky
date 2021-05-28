@@ -24,30 +24,46 @@ namespace Wiky.Controllers
         [HttpPost]
         public ActionResult AjouterCommentaire(Commentaire commentaire)
         {
-            commentaire.DateCreation = DateTime.Now;
-            commentaire = new CommentaireRepository().AddOneCommentaire(commentaire);
+            if (ModelState.IsValid)
+            {
+                commentaire.DateCreation = DateTime.Now;
+                commentaire = new CommentaireRepository().AddOneCommentaire(commentaire);
 
-            if (commentaire == null)
-                TempData["MessageAjout"] = "Erreur";
+                if (commentaire == null)
+                    TempData["MessageAjout"] = "Erreur";
+                else
+                    TempData["MessageAjout"] = "Le commentaire est ajouté";
+                return Redirect(Request.UrlReferrer.ToString());
+            }
             else
-                TempData["MessageAjout"] = "Le commentaire est ajouté";
-            return Redirect(Request.UrlReferrer.ToString());
+            {
+                return Redirect(Request.UrlReferrer.ToString());
+            }
         }
 
         [HttpPost]
         public ActionResult AjaxListeCommentaire(Commentaire commentaire)
         {
-            commentaire.DateCreation = DateTime.Now;
-
             CommentaireRepository repo = new CommentaireRepository();
-            commentaire = repo.AddOneCommentaire(commentaire);
-            List<Commentaire> commentaires = repo.FindAllCommentaire();
 
-            if (commentaire == null)
-                TempData["MessageAjout"] = "Erreur";
+            if (ModelState.IsValid)
+            {
+                commentaire.DateCreation = DateTime.Now;
+                commentaire = repo.AddOneCommentaire(commentaire);
+                List<Commentaire> commentaires = repo.FindAllCommentaire();
+
+                if (commentaire == null)
+                    TempData["MessageAjout"] = "Erreur";
+                else
+                    TempData["MessageAjout"] = "Le commentaire est ajouté";
+                return PartialView("_AjaxListeCommentaires", commentaires);
+            }
             else
-                TempData["MessageAjout"] = "Le commentaire est ajouté";
-            return PartialView("_AjaxListeCommentaires", commentaires);
+            {
+                List<Commentaire> commentaires = repo.FindAllCommentaire();
+                TempData["MessageAjout"] = "Vous devez saisir un Auteur";
+                return PartialView("_AjaxListeCommentaires", commentaires);
+            }
         }
 
         public ActionResult VoirCommentaire(int id = 0)
