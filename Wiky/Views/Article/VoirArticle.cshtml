@@ -32,11 +32,13 @@
                     <td>@commentaire.DateCreation.ToString("dd/MM/yyyy")</td>
                     <td>@commentaire.Auteur</td>
                     <td>@commentaire.Contenu</td>
-                    <td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, null)</td>
+                    <td><a href="#" onclick="eventliensupprimer(@commentaire.Id);">Supprimer</a></td>
+                    @*<td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, new { id = commentaire.Id, @class = "eventliensupprimer" })</td>*@
                 </tr>
             }
-        <tbody>
+        </tbody>
     </table>
+    @Html.AntiForgeryToken()
 </div>
 @*Ajouter Ajax pour ajouter Commentaire*@
 @section scripts {
@@ -47,10 +49,18 @@
             var Contenu = $("#Contenu").val();
             var ArticleId = $("#ArticleId").val();
             $.post("@(Url.Action("AjaxListeCommentaire", "Commentaire"))", { Auteur: Auteur, Contenu: Contenu, ArticleId: ArticleId },
-            function (data)
-            {
-                $("#ajax").html(data);
-            });
+                function (data) {
+                    $("#ajax").html(data);
+                });
         });
+
+        function eventliensupprimer(id) {
+            var token = $("[name='__RequestVerificationToken']").val()
+            $.post("@(Url.Action("AjaxSupprimerCommentaire", "commentaire"))", { id: id, __RequestVerificationToken: token },
+                function (data) {
+                    $("#ajax").html(data);
+                });
+            return false;
+        }
     </script>
 }

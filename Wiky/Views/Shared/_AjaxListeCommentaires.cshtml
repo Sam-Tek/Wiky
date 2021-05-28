@@ -14,13 +14,15 @@
     <tbody>
         @foreach (var commentaire in Model)
         {
-        <tr>
-            <td>@commentaire.Id</td>
-            <td>@commentaire.DateCreation.ToString("dd/MM/yyyy")</td>
-            <td>@commentaire.Auteur</td>
-            <td>@commentaire.Contenu</td>
-            <td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, null)</td>
-        </tr>
+            <tr>
+                <td>@commentaire.Id</td>
+                <td>@commentaire.DateCreation.ToString("dd/MM/yyyy")</td>
+                <td>@commentaire.Auteur</td>
+                <td>@commentaire.Contenu</td>
+                <td><a href="#" onclick="eventliensupprimer(@commentaire.Id);">Supprimer</a></td>
+                @*<td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, new { id = commentaire.Id, @class = "eventliensupprimer" })</td>*@
+            </tr>
         }
-    <tbody>
+    </tbody>
 </table>
+@Html.AntiForgeryToken()

@@ -70,6 +70,23 @@ namespace Wiky.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AjaxSupprimerCommentaire(int id = 0)
+        {
+            //INFORMATION UTILE =>
+            //__RequestVerificationToken pour une requête post en ajax il faut envoyer le token avec cette clé
+            CommentaireRepository repo = new CommentaireRepository();
+            Commentaire commentaire = repo.DelOneCommentaire(id);
+            List<Commentaire> commentaires = repo.FindAllCommentaire();
+
+            if (commentaire == null)
+                TempData["MessageAjout"] = "Erreur";
+            else
+                @TempData["MessageAjout"] = "Le commentaire est supprimé";
+            return PartialView("_AjaxListeCommentaires", commentaires);
+        }
+
         public ActionResult ModifierCommentaire(int id = 0)
         {
             Commentaire commentaire = new CommentaireRepository().FindOneCommentaireById(id);
