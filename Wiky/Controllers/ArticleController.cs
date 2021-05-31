@@ -21,6 +21,7 @@ namespace Wiky.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AjouterArticle(Article article)
         {
             if (ModelState.IsValid)
@@ -72,6 +73,7 @@ namespace Wiky.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ModifierArticle(Article article)
         {
             if (ModelState.IsValid)
@@ -90,7 +92,7 @@ namespace Wiky.Controllers
                 return RedirectToAction(Request.UrlReferrer.ToString());
         }
 
-        public ActionResult ThemeUnique(string theme, int id)
+        public ActionResult ThemeUnique(string theme)
         {
             List<Article> articles = new ArticleRepository().FindArticleByTheme(theme);
             if (articles.Count == 0)

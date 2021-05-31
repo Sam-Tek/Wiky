@@ -22,6 +22,7 @@ namespace Wiky.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AjouterCommentaire(Commentaire commentaire)
         {
             if (ModelState.IsValid)
@@ -42,6 +43,7 @@ namespace Wiky.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AjaxListeCommentaire(Commentaire commentaire)
         {
             CommentaireRepository repo = new CommentaireRepository();
@@ -113,6 +115,7 @@ namespace Wiky.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ModifierCommentaire(Commentaire commentaire)
         {
             commentaire = new CommentaireRepository().AmendCommentaire(commentaire);

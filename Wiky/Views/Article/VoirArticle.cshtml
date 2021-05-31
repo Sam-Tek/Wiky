@@ -48,14 +48,15 @@
             var Auteur = $("#Auteur").val();
             var Contenu = $("#Contenu").val();
             var ArticleId = $("#ArticleId").val();
-            $.post("@(Url.Action("AjaxListeCommentaire", "Commentaire"))", { Auteur: Auteur, Contenu: Contenu, ArticleId: ArticleId },
+            var token = $("[name='__RequestVerificationToken']").val();
+            $.post("@(Url.Action("AjaxListeCommentaire", "Commentaire"))", { Auteur: Auteur, Contenu: Contenu, ArticleId: ArticleId, __RequestVerificationToken: token },
                 function (data) {
                     $("#ajax").html(data);
                 });
         });
 
         function eventliensupprimer(id) {
-            var token = $("[name='__RequestVerificationToken']").val()
+            var token = $("[name='__RequestVerificationToken']").val();
             $.post("@(Url.Action("AjaxSupprimerCommentaire", "commentaire"))", { id: id, __RequestVerificationToken: token },
                 function (data) {
                     $("#ajax").html(data);

@@ -16,5 +16,7 @@
 
     @Html.LabelFor(m => m.Contenu);
     @Html.EditorFor(m => m.Contenu);
+    @Html.AntiForgeryToken()
+
     <input type="submit" value="Modifier" />
 }

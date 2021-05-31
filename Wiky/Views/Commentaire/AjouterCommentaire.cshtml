@@ -15,5 +15,7 @@
 
     @Html.Partial("_SelectArticle",(List<Wiky.Models.Article>) ViewBag.ListArticle);
 
+    @Html.AntiForgeryToken()
+
     <input type="submit" value="Ajouter un Commentaire"/>
 }
