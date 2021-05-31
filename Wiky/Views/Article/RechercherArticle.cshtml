@@ -1,0 +1,34 @@
+﻿@model List<Wiky.Models.Article>
+@{
+    ViewBag.Title = "Rechercher articles";
+}
+
+<h2>Rechercher articles</h2>
+@TempData["Message"]
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Thème</th>
+            <th scope="col">Contenu</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+        <tr>
+            <td>@article.Id</td>
+            <td>@article.DateCreation.ToString("dd/MM/yyyy")</td>
+            <td>@article.Auteur</td>
+            <td>@article.Theme</td>
+            <td>@article.Contenu</td>
+            <td>@Html.ActionLink("Voir article","VoirArticle","Article", new { id = article.Id}, null)</td>
+            @*<td>@Html.ActionLink("Supprimer", "SupprimerCommentaire", "Commentaire", new { id = commentaire.Id }, new { id = commentaire.Id, @class = "eventliensupprimer" })</td>*@
+        </tr>
+        }
+    </tbody>
+</table>

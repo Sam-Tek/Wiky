@@ -207,6 +207,7 @@
     <Content Include="Views\Shared\_FormCommentaire.cshtml" />
     <Content Include="Views\Shared\_AjaxListeCommentaires.cshtml" />
     <Content Include="Views\Shared\_VoirArticle.cshtml" />
+    <Content Include="Views\Article\RechercherArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

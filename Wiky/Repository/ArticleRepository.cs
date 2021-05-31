@@ -66,5 +66,11 @@ namespace Wiky.Repository
         {
             return Context.Article.OrderByDescending(a => a.DateCreation).FirstOrDefault();
         }
+
+        public List<Article> FindArticle(string search)
+        {
+            List<Article> articles = Context.Article.Where(a => a.Auteur.Contains(search) || a.Theme.Contains(search) || a.Contenu.Contains(search)).ToList();
+            return articles;
+        }
     }
 }

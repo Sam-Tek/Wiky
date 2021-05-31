@@ -92,6 +92,16 @@ namespace Wiky.Controllers
                 return RedirectToAction(Request.UrlReferrer.ToString());
         }
 
+        public ActionResult RechercherArticle(string search)
+        {
+            List<Article> articles = new ArticleRepository().FindArticle(search);
+            if (articles.Count == 0)
+                TempData["Message"] = "Il n'y a pas de résultat";
+            else
+                TempData["Message"] = $"{articles.Count} résultats";
+            return View(articles);
+        }
+
         public ActionResult ThemeUnique(string theme, int Id = 0)
         {
             List<Article> articles = new ArticleRepository().FindArticleByTheme(theme);
