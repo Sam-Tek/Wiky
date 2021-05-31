@@ -4,10 +4,8 @@
 }
 
 <h2>Voir un Article</h2>
-<p>Auteur : @Model.Auteur </p>
-<p>Date : @Model.DateCreation.ToString("dd/MM/yyyy") </p>
-<p>Thème : @Model.Theme </p>
-<p>Contenu : @Model.Contenu </p>
+@Html.Partial("_VoirArticle", Model)
+
 
 @Html.Partial("_FormCommentaire", (Wiky.Models.Commentaire)ViewBag.commentaire)
 @TempData["MessageAjout"]

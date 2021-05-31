@@ -61,5 +61,10 @@ namespace Wiky.Repository
 
             return articleBDD;
         }
+
+        public Article FindLastArticle()
+        {
+            return Context.Article.OrderByDescending(a => a.DateCreation).FirstOrDefault();
+        }
     }
 }

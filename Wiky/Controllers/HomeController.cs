@@ -12,7 +12,9 @@ namespace Wiky.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Article article = new ArticleRepository().FindLastArticle();
+
+            return View(article);
         }
 
         public ActionResult About()
