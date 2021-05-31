@@ -13,10 +13,12 @@ namespace Wiky.Models
         public int Id { get; set; }
 
         [DisplayName("Thème")]
-        [Remote("ThemeUnique", "Article", ErrorMessage = "Le thème doit être unique", AdditionalFields = "Id")]
+        [Required(ErrorMessage = "Vous devez saisir un Thème")]
+        [Remote("ThemeUnique", "Article", ErrorMessage = "Le thème doit être unique.", AdditionalFields = "Id")]
         public string Theme { get; set; }
 
         [DisplayName("Auteur")]
+        [Required(ErrorMessage = "Vous devez saisir un Auteur")]
         public string Auteur { get; set; }
 
         [DisplayName("Date de Création")]

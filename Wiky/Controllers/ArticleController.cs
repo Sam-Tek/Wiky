@@ -92,20 +92,13 @@ namespace Wiky.Controllers
                 return RedirectToAction(Request.UrlReferrer.ToString());
         }
 
-        public ActionResult ThemeUnique(string theme)
+        public ActionResult ThemeUnique(string theme, int Id = 0)
         {
             List<Article> articles = new ArticleRepository().FindArticleByTheme(theme);
-            if (articles.Count == 0)
+            Article articleBDD = articles.FirstOrDefault(a => a.Id == Id);
+            if (articles.Count == 0 || (articles.Count == 1 && articleBDD != null))
                 return Json(true, JsonRequestBehavior.AllowGet);
             return Json(false, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult ThemeUnique(string theme, int Id)
-        //{
-        //    List<Article> articles = new ArticleRepository().FindArticleByTheme(theme);
-        //    Article articleBDD = articles.FirstOrDefault(a => a.Id == Id);
-        //    if (articles.Count == 0 || (articles.Count == 1 && articleBDD != null))
-        //        return Json(true, JsonRequestBehavior.AllowGet);
-        //    return Json(false, JsonRequestBehavior.AllowGet);
-        //}
     }
 }

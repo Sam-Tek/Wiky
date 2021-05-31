@@ -146,6 +146,10 @@
     <Compile Include="Migrations\202105281228186_ThemUnique.Designer.cs">
       <DependentUpon>202105281228186_ThemUnique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105310934141_Requiredthem.cs" />
+    <Compile Include="Migrations\202105310934141_Requiredthem.Designer.cs">
+      <DependentUpon>202105310934141_Requiredthem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Commentaire.cs" />
@@ -228,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105281228186_ThemUnique.resx">
       <DependentUpon>202105281228186_ThemUnique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105310934141_Requiredthem.resx">
+      <DependentUpon>202105310934141_Requiredthem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
